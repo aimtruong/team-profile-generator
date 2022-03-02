@@ -1,0 +1,17 @@
+header{
+    background-color: coral;
+}
+
+.job-title{
+    background-color: aquamarine;
+}
+
+.job-detail{
+    background-color: lightgray;
+    text-decoration: none;
+}
+
+.job-info{
+    padding: 3px;
+    padding-right: 20px;
+}
