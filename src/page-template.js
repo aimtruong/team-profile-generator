@@ -3,14 +3,14 @@ const generateManager = managers => {
     return `
         <section class = "card">
             <div class = "job-title">
-                <p>${manager}</p>
+                <p>${managers.manager}</p>
                 <p>Manager</p>
             </div>
 
             <div class = "job-detail">
-                <p class = "job-info">ID: ${id}</p>
-                <p class = "job-info">Email: ${email}</p>
-                <p class = "job-info">Office number: ${office}</p>
+                <p class = "job-info">ID: ${managers.id}</p>
+                <p class = "job-info">Email: ${managers.email}</p>
+                <p class = "job-info">Office number: ${managers.office}</p>
             </div>
         </section>
     `;
@@ -20,14 +20,14 @@ const generateEngineer = engineers => {
     return `
         <section class = "card">
             <div class = "job-title">
-                <p>${engineer}</p>
+                <p>${engineers.engineer}</p>
                 <p>Engineer</p>
             </div>
 
             <div class = "job-detail">
-                <p class = "job-info">ID: ${id}</p>
-                <p class = "job-info">Email: ${email}</p>
-                <p class = "job-info">GitHub: ${github}</p>
+                <p class = "job-info">ID: ${engineers.id}</p>
+                <p class = "job-info">Email: ${engineers.email}</p>
+                <p class = "job-info">GitHub: ${engineers.github}</p>
             </div>
         </section>
     `;
@@ -37,14 +37,14 @@ const generateIntern = interns => {
     return `
         <section class = "card">
             <div class = "job-title">
-                <p>${intern}</p>
+                <p>${interns.intern}</p>
                 <p>Intern</p>
             </div>
 
             <div class = "job-detail">
-                <p class = "job-info">ID: ${id}</p>
-                <p class = "job-info">Email: ${email}</p>
-                <p class = "job-info">School: ${school}</p>
+                <p class = "job-info">ID: ${interns.id}</p>
+                <p class = "job-info">Email: ${interns.email}</p>
+                <p class = "job-info">School: ${interns.school}</p>
             </div>
         </section>
     `;
