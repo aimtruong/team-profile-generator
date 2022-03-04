@@ -2,9 +2,6 @@
 const inquirer = require("inquirer");
 
 const manInfo = () => {
-    // if no "managers" array
-    var managers = [];
-
     return inquirer.prompt([
         {
             type: "input",
@@ -44,8 +41,10 @@ const manInfo = () => {
     });
 };
 
-const engInfo = (engineers) => {
-    var engineers = [];
+const engInfo = engineers => {
+    if(!engineers.eng){
+        engineers.eng = [];
+    };
 
     return inquirer.prompt([
         {
@@ -76,7 +75,7 @@ const engInfo = (engineers) => {
         }
     ])
     .then(engData => {
-        engineers.push(engData);
+        engineers.eng.push(engData);
         if(engData.confirmEngInfo){
             return engInfo(engineers);
         }
@@ -86,7 +85,7 @@ const engInfo = (engineers) => {
     });
 };
 
-const intInfo = (interns) => {
+const intInfo = interns => {
     // if no 'interns' array
     if(!interns.int){
         interns.int = [];
@@ -121,7 +120,7 @@ const intInfo = (interns) => {
         }
     ])
     .then(intData => {
-        interns.push(intData);
+        interns.int.push(intData);
         if(intData.confirmIntInfo){
             return intInfo(interns);
         }
@@ -134,8 +133,4 @@ const intInfo = (interns) => {
 manInfo()
     .then(engInfo)
     .then(intInfo)
-    //.then(
-    //    console.log(manInfo),
-    //    console.log(engInfo),
-    //    console.log(intInfo)
-   // );
+    .then(answers => console.log(answers));
