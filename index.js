@@ -1,5 +1,7 @@
 
 const inquirer = require("inquirer");
+const fs = require("fs");
+
 
 const manInfo = () => {
     return inquirer.prompt([
@@ -130,8 +132,25 @@ const intInfo = interns => {
     });
 };
 
+const writeFile = fileContent => {
+    return new Promise((resolve, reject) => {
+        fs.writeFile("dist/index.html", fileContent, (err) => {
+            if(err){
+                reject(err);
+                return;
+            }
+            resolve({
+                ok: true,
+                message: "file written successfully"
+            });
+        });
+    });
+};
+
+
 manInfo()
     .then(engInfo)
     .then(intInfo)
     .then(answers => console.log(answers))
+    .then()
     .catch(err => {console.log(err)});

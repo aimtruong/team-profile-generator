@@ -3,16 +3,23 @@ const generateManager = managers => {
     return `
         <section class = "card">
             <div class = "job-title">
-                <p>${managers.manager}</p>
+            ${managers
+                .map(({ manName, manId, manEmail, manOffice }) => {
+                return `
+                <p>${manName}</p>
                 <p>Manager</p>
-            </div>
+                </div>
 
-            <div class = "job-detail">
-                <p class = "job-info">ID: ${managers.id}</p>
-                <p class = "job-info">Email: ${managers.email}</p>
-                <p class = "job-info">Office number: ${managers.office}</p>
-            </div>
-        </section>
+                <div class = "job-detail">
+                    <p class = "job-info">ID: ${manId}</p>
+                    <p class = "job-info">Email: ${manEmail}</p>
+                    <p class = "job-info">Office number: ${manOffice}</p>
+                </div>
+                </section>
+                `;
+                })
+                .join("")
+            }
     `;
 };
 
@@ -20,16 +27,23 @@ const generateEngineer = engineers => {
     return `
         <section class = "card">
             <div class = "job-title">
-                <p>${engineers.engineer}</p>
+            ${engineers
+                .map(({ engName, engId, engEmail, engGit }) => {
+                    return `
+                    <p>${engName}</p>
                 <p>Engineer</p>
-            </div>
+                </div>
 
-            <div class = "job-detail">
-                <p class = "job-info">ID: ${engineers.id}</p>
-                <p class = "job-info">Email: ${engineers.email}</p>
-                <p class = "job-info">GitHub: ${engineers.github}</p>
-            </div>
-        </section>
+                <div class = "job-detail">
+                    <p class = "job-info">ID: ${engId}</p>
+                    <p class = "job-info">Email: ${engEmail}</p>
+                    <p class = "job-info">GitHub: ${engGit}</p>
+                </div>
+                </section>
+                `;
+                })
+                .join("")
+            }
     `;
 };
 
@@ -37,16 +51,23 @@ const generateIntern = interns => {
     return `
         <section class = "card">
             <div class = "job-title">
-                <p>${interns.intern}</p>
-                <p>Intern</p>
-            </div>
+            ${interns
+                .map(({ intName, intId, intEmail, intSchool }) => {
+                    return `
+                    <p>${intName}</p>
+                    <p>Intern</p>
+                    </div>
 
-            <div class = "job-detail">
-                <p class = "job-info">ID: ${interns.id}</p>
-                <p class = "job-info">Email: ${interns.email}</p>
-                <p class = "job-info">School: ${interns.school}</p>
-            </div>
-        </section>
+                    <div class = "job-detail">
+                        <p class = "job-info">ID: ${intId}</p>
+                        <p class = "job-info">Email: ${intEmail}</p>
+                        <p class = "job-info">School: ${intSchool}</p>
+                    </div>
+                    </section>
+                    `;
+                })
+                .join("")
+            }
     `;
 };
 
