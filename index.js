@@ -133,4 +133,5 @@ const intInfo = interns => {
 manInfo()
     .then(engInfo)
     .then(intInfo)
-    .then(answers => console.log(answers));
+    .then(answers => console.log(answers))
+    .catch(err => {console.log(err)});
