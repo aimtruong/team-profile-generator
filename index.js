@@ -1,9 +1,10 @@
 
 const inquirer = require("inquirer");
+const generatePage = require("./src/page-template");
 const fs = require("fs");
 
-
 const manInfo = () => {
+
     return inquirer.prompt([
         {
             type: "input",
@@ -24,23 +25,8 @@ const manInfo = () => {
             type: "input",
             name: "manOffice",
             message: "What is the manager's office number? "
-        },
-        {
-            type: "confirm",
-            name: "confirmManInfo",
-            message: "Would you like to add another manager? ",
-            default: false
         }
-    ])
-    .then(manData => {
-        managers.push(manData);
-        if(manData.confirmManInfo){
-            return manInfo(managers);
-        }
-        else{
-            return managers;
-        }
-    });
+    ]);
 };
 
 const engInfo = engineers => {
@@ -147,10 +133,37 @@ const writeFile = fileContent => {
     });
 };
 
+const copyFile = () => {
+    return new Promise((resolve, reject) => {
+        fs.copyFile("./src/style.css", "./dist/style.css", err => {
+            if(err){
+                reject(err);
+                return;
+            }
+            resolve({
+                ok: true,
+                message: "File copied!"
+            });
+        });
+    });
+};
 
 manInfo()
     .then(engInfo)
     .then(intInfo)
-    .then(answers => console.log(answers))
-    .then()
+    .then(answers => {
+        //console.log(answers);
+        return generatePage(answers);
+    })
+    .then(pageHTML => {
+        console.log("Team profile was created successfully!");
+        return writeFile(pageHTML);
+    })
+    .then(writeFileResponse => {
+        console.log(writeFileResponse);
+        return copyFile();
+    })
+    .then(writeCopyResponse => {
+        console.log(writeCopyResponse);
+    })
     .catch(err => {console.log(err)});
