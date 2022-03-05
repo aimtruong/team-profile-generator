@@ -1,0 +1,45 @@
+header{
+    background-color: rgb(253, 63, 63);
+    color: white;
+    font-family: 'Franklin Gothic Medium', 'Arial Narrow', Arial, sans-serif;
+    font-size: 24px;
+    padding: 20px;
+    text-align: center;
+}
+
+.container{
+    display: flex;
+    flex-wrap: wrap;
+    font-family: 'Franklin Gothic Medium', 'Arial Narrow', Arial, sans-serif;
+    justify-content: space-evenly;
+    margin: 0 150px;
+}
+
+.card{
+    box-shadow: 5px 0px 3px hsl(0deg 0% 0% / .30);
+    margin: 30px 20px;
+    text-align: left;
+}
+
+.card p{
+    margin: 0;
+}
+
+.job-title{
+    background-color: rgb(63, 107, 252);
+    color: white;
+    font-size: 20px;
+    padding: 10px 20px;
+}
+
+.job-detail{
+    background-color: whitesmoke;
+    padding: 30px 15px;
+}
+
+.job-info{
+    background-color: white;
+    border: 1px solid gray;
+    justify-content: center;
+    padding: 3px 10px;
+}
