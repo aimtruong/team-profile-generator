@@ -4,7 +4,6 @@ const generatePage = require("./src/page-template");
 const fs = require("fs");
 
 const manInfo = () => {
-
     return inquirer.prompt([
         {
             type: "input",
@@ -25,11 +24,30 @@ const manInfo = () => {
             type: "input",
             name: "manOffice",
             message: "What is the manager's office number? "
-        }
-    ]);
+        },
+//        {
+//            type: "list",
+//            name: "confirmEmployee",
+//            message: "Would you like to add an engineer, intern, or the team is complete? ",
+//            choices: ["Engineer", "Intern", "Completed Team"],
+//            default: "Engineer"
+//        }
+    ])
+    //.then(manData => {
+    //    if(manData.confirmEmployee === "Engineer"){
+    //        return engInfo(manData);
+    //    }
+    //    else if(manData.confirmEmployee === "Intern"){
+    //       return intInfo(manData);
+    //    }
+    //    else if(manData.confirmEmployee === "Completed Team"){
+    //        return manData;
+    //    }
+    //});
 };
 
 const engInfo = engineers => {
+    // if no "engineer" array
     if(!engineers.eng){
         engineers.eng = [];
     };
@@ -152,11 +170,10 @@ manInfo()
     .then(engInfo)
     .then(intInfo)
     .then(answers => {
-        //console.log(answers);
         return generatePage(answers);
     })
     .then(pageHTML => {
-        console.log("Team profile was created successfully!");
+        console.log("Team profile was created successfully! Find the HTML and CSS in the dist folder.");
         return writeFile(pageHTML);
     })
     .then(writeFileResponse => {

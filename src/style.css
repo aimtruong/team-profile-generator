@@ -16,7 +16,7 @@ header{
 }
 
 .card{
-    box-shadow: 5px 0px 3px hsl(0deg 0% 0% / .30);
+    box-shadow: 5px 5px 3px hsl(0deg 0% 0% / .30);
     margin: 30px 20px;
     text-align: left;
 }
