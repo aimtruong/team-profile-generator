@@ -1,12 +1,32 @@
 
 const Employee = require("../lib/Employee.js");
 
-// make new employee class
+// checks for employee class
 test("is an Employee", () => {
     const employee = new Employee();
 
-    expect(employee.name).toEqual(expect.anything());
-    expect(employee.id).toEqual(expect.any(Number));
-    expect(employee.email).toEqual(expect.stringMatching(/^@/));
+    // see if name is anything that's not undefined
+    expect(employee.getName()).toEqual(expect.anything());
+    
+    // see if getName() fails
+    employee.name = "";
+    expect(employee.getName()).toEqual(false);
+
+    // see if id is any number
+    expect(employee.getId()).toEqual(expect.any(Number));
+
+    // see if getId() fails
+    employee.id = "1";
+    expect(employee.getId()).toEqual(false);
+    
+    // see if email has a @ to be true
+    expect(employee.getEmail()).toEqual(expect.stringMatching(/@/));
+    
+    // see if getEmail fails
+    employee.email = "employee.com";
+    expect(employee.getEmail()).toEqual(false);
+
+    // see if getRole() returns Employee
+    expect(employee.getRole()).toEqual(expect.stringMatching(/Employee/));
 
 });

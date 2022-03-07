@@ -1,6 +1,7 @@
 
 const Intern = require("../lib/Intern.js");
 
+// test for each intern class
 test("gets intern's full info", () => {
     const intern = new Intern(name);
 

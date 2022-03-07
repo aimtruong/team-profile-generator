@@ -1,6 +1,7 @@
 
 const Engineer = require("../lib/Engineer.js");
 
+// test for each engineer class
 test("gets engineer's full info", () => {
     const engineer = new Engineer(name);
 
