@@ -5,5 +5,8 @@ const Employee = require("../lib/Employee.js");
 test("is an Employee", () => {
     const employee = new Employee();
 
-    expect(employee.name).toBeCalledWith(expect.anything());
+    expect(employee.name).toEqual(expect.anything());
+    expect(employee.id).toEqual(expect.any(Number));
+    expect(employee.email).toEqual(expect.stringMatching(/^@/));
+
 });

@@ -1,8 +1,16 @@
 
+// packages and files needed
 const inquirer = require("inquirer");
 const generatePage = require("./src/page-template");
 const fs = require("fs");
 
+const engineers = "";
+    engineers.eng = [];
+
+const interns = "";
+    interns.int = [];
+
+// prompt function to create manager
 const manInfo = () => {
     return inquirer.prompt([
         {
@@ -25,27 +33,28 @@ const manInfo = () => {
             name: "manOffice",
             message: "What is the manager's office number? "
         },
-//        {
-//            type: "list",
-//            name: "confirmEmployee",
-//            message: "Would you like to add an engineer, intern, or the team is complete? ",
-//            choices: ["Engineer", "Intern", "Completed Team"],
-//            default: "Engineer"
-//        }
+        {
+            type: "list",
+            name: "confirmEmployee",
+            message: "Would you like to add an engineer, intern, or the team is complete? ",
+            choices: ["Engineer", "Intern", "Completed Team"],
+            default: "Engineer"
+        }
     ])
-    //.then(manData => {
-    //    if(manData.confirmEmployee === "Engineer"){
-    //        return engInfo(manData);
-    //    }
-    //    else if(manData.confirmEmployee === "Intern"){
-    //       return intInfo(manData);
-    //    }
-    //    else if(manData.confirmEmployee === "Completed Team"){
-    //        return manData;
-    //    }
-    //});
+    .then(manData => {
+        if(manData.confirmEmployee === "Engineer"){
+            return engInfo(manData);
+        }
+        else if(manData.confirmEmployee === "Intern"){
+           return intInfo(manData);
+        }
+        else if(manData.confirmEmployee === "Completed Team"){
+            return manData;
+        }
+    });
 };
 
+// prompt function to create engineer
 const engInfo = engineers => {
     // if no "engineer" array
     if(!engineers.eng){
@@ -74,23 +83,28 @@ const engInfo = engineers => {
             message: "What is the engineer's GitHub username? "
         },
         {
-            type: "confirm",
-            name: "confirmEngInfo",
-            message: "Would you like to add another engineer? ",
-            default: false
+            type: "list",
+            name: "confirmEmployee",
+            message: "Would you like to add an engineer, intern, or the team is complete? ",
+            choices: ["Engineer", "Intern", "Completed Team"],
+            default: "Engineer"
         }
     ])
     .then(engData => {
         engineers.eng.push(engData);
-        if(engData.confirmEngInfo){
-            return engInfo(engineers);
+        if(engData.confirmEmployee === "Engineer"){
+            return engInfo(engData);
         }
-        else{
+        else if(engData.confirmEmployee === "Intern"){
+           return intInfo(engData);
+        }
+        else if(engData.confirmEmployee === "Completed Team"){
             return engineers;
         }
     });
 };
 
+// prompt function to create intern
 const intInfo = interns => {
     // if no 'interns' array
     if(!interns.int){
@@ -119,23 +133,28 @@ const intInfo = interns => {
             message: "Where did the intern graduated? "
         },
         {
-            type: "confirm",
-            name: "confirmIntInfo",
-            message: "Would you like to add another intern? ",
-            default: false
+            type: "list",
+            name: "confirmEmployee",
+            message: "Would you like to add an engineer, intern, or the team is complete? ",
+            choices: ["Engineer", "Intern", "Completed Team"],
+            default: "Intern"
         }
     ])
     .then(intData => {
         interns.int.push(intData);
-        if(intData.confirmIntInfo){
-            return intInfo(interns);
+        if(intData.confirmEmployee === "Engineer"){
+            return engInfo(intData);
         }
-        else{
+        else if(intData.confirmEmployee === "Intern"){
+           return intInfo(intData);
+        }
+        else if(intData.confirmEmployee === "Completed Team"){
             return interns;
         }
     });
 };
 
+// write HTML file from generatePage()
 const writeFile = fileContent => {
     return new Promise((resolve, reject) => {
         fs.writeFile("dist/index.html", fileContent, (err) => {
@@ -151,6 +170,7 @@ const writeFile = fileContent => {
     });
 };
 
+// copy CSS file
 const copyFile = () => {
     return new Promise((resolve, reject) => {
         fs.copyFile("./src/style.css", "./dist/style.css", err => {
@@ -166,11 +186,13 @@ const copyFile = () => {
     });
 };
 
+// start prompts for manager, engineer, and interns and create files into dist/
 manInfo()
-    .then(engInfo)
-    .then(intInfo)
+    //.then(engInfo)
+    //.then(intInfo)
     .then(answers => {
-        return generatePage(answers);
+        console.log(answers);
+        //return generatePage(answers);
     })
     .then(pageHTML => {
         console.log("Team profile was created successfully! Find the HTML and CSS in the dist folder.");
