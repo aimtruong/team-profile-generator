@@ -5,5 +5,5 @@ const Employee = require("../lib/Employee.js");
 test("is an Employee", () => {
     const employee = new Employee();
 
-    expect(employee).toBeCalledWith(expect.anything());
+    expect(employee.name).toBeCalledWith(expect.anything());
 });
