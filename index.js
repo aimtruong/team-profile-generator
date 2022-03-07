@@ -1,8 +1,10 @@
 
+// packages and files needed
 const inquirer = require("inquirer");
 const generatePage = require("./src/page-template");
 const fs = require("fs");
 
+// prompt function to create manager
 const manInfo = () => {
     return inquirer.prompt([
         {
@@ -46,6 +48,7 @@ const manInfo = () => {
     //});
 };
 
+// prompt function to create engineer
 const engInfo = engineers => {
     // if no "engineer" array
     if(!engineers.eng){
@@ -91,6 +94,7 @@ const engInfo = engineers => {
     });
 };
 
+// prompt function to create intern
 const intInfo = interns => {
     // if no 'interns' array
     if(!interns.int){
@@ -136,6 +140,7 @@ const intInfo = interns => {
     });
 };
 
+// write HTML file from generatePage()
 const writeFile = fileContent => {
     return new Promise((resolve, reject) => {
         fs.writeFile("dist/index.html", fileContent, (err) => {
@@ -151,6 +156,7 @@ const writeFile = fileContent => {
     });
 };
 
+// copy CSS file
 const copyFile = () => {
     return new Promise((resolve, reject) => {
         fs.copyFile("./src/style.css", "./dist/style.css", err => {
@@ -166,6 +172,7 @@ const copyFile = () => {
     });
 };
 
+// start prompts for manager, engineer, and interns and create files into dist/
 manInfo()
     .then(engInfo)
     .then(intInfo)
