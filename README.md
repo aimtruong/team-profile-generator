@@ -23,10 +23,12 @@
 
 ## Usage
 - A quick way to create a file with your team members with their email and github links
----
-> include screenshots here,
-> create an 'assets/images' folder and drag image in this section
----
+
+
+## First Preview
+![first-preview](https://user-images.githubusercontent.com/95596045/156950365-2de7fa82-432e-469d-8123-e28c7ff12179.JPG)
+
+## Walkthrough Video
 
 
 ## Contributing
