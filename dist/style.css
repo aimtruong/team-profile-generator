@@ -1,23 +1,23 @@
 header{
     background-color: rgb(253, 63, 63);
-    padding: 20px;
-    font-size: 24px;
-    text-align: center;
     color: white;
     font-family: 'Franklin Gothic Medium', 'Arial Narrow', Arial, sans-serif;
+    font-size: 24px;
+    padding: 20px;
+    text-align: center;
 }
 
 .container{
     display: flex;
     flex-wrap: wrap;
-    justify-content: space-evenly;
-    margin: 0 100px;
     font-family: 'Franklin Gothic Medium', 'Arial Narrow', Arial, sans-serif;
+    justify-content: space-evenly;
+    margin: 0 150px;
 }
 
 .card{
-    margin-top: 30px;
-    padding: 20px;
+    box-shadow: 5px 0px 3px hsl(0deg 0% 0% / .30);
+    margin: 30px 20px;
     text-align: left;
 }
 
@@ -30,18 +30,16 @@ header{
     color: white;
     font-size: 20px;
     padding: 10px 20px;
-    box-shadow: 5px 0px 3px hsl(0deg 0% 0% / .30);
 }
 
 .job-detail{
     background-color: whitesmoke;
     padding: 30px 15px;
-    box-shadow: 5px 3px 3px hsl(0deg 0% 0% / .30);
 }
 
 .job-info{
-    justify-content: center;
-    border: 1px solid gray;
-    padding: 3px 10px;
     background-color: white;
+    border: 1px solid gray;
+    justify-content: center;
+    padding: 3px 10px;
 }
