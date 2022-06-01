@@ -9,7 +9,7 @@ test("is an Employee", () => {
     expect(employee.getName()).toEqual(expect.anything());
     
     // see if getName() fails
-    employee.name = "";
+    employee.fName = "";
     expect(employee.getName()).toEqual(false);
 
     // see if id is any number

@@ -18,7 +18,7 @@
 ---
 
 ## Installation
-- Remember to "npm install" to install all programs before starting Team Profile Generator
+- Clone this repo locally and write "npm install" to install all of the packages before starting Team Profile Generator
 
 
 ## Usage
@@ -44,6 +44,6 @@
 >
 >[My GitHub Profile](https://github.com/aimtruong)
 >
->Email me at aimtruong@ucdavis.edu if you have any additional questions!
+>Email me at nttruong00@gmail.com if you have any additional questions!
 
     

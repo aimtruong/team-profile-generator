@@ -3,10 +3,13 @@ const Engineer = require("../lib/Engineer.js");
 
 // test for each engineer class
 test("gets engineer's full info", () => {
-    const engineer = new Engineer(name);
+    const engineer = new Engineer();
 
-    expect(engineer.engInfo()).toHaveProperty("engName");
-    expect(engineer.engInfo()).toHaveProperty("engId");
-    expect(engineer.engInfo()).toHaveProperty("engEmail");
-    expect(engineer.engInfo()).toHaveProperty("engGit");
+
+    expect(engineer.getGithub()).toEqual();
+
+    // see if getGithub fails
+    engineer.github = "john";
+    expect(engineer.getGithub()).toEqual(false);
+
 });
