@@ -4,11 +4,12 @@ const inquirer = require("inquirer");
 const generatePage = require("./src/page-template");
 const fs = require("fs");
 
-const engineers = "";
-    engineers.eng = [];
-
-const interns = "";
-    interns.int = [];
+const team = {
+    manager: [],
+    eng: [],
+    int: []
+};
+    
 
 // prompt function to create manager
 const manInfo = () => {
@@ -42,6 +43,7 @@ const manInfo = () => {
         }
     ])
     .then(manData => {
+        team.manager.push(manData);
         if(manData.confirmEmployee === "Engineer"){
             return engInfo(manData);
         }
@@ -49,18 +51,13 @@ const manInfo = () => {
            return intInfo(manData);
         }
         else if(manData.confirmEmployee === "Completed Team"){
-            return manData;
+            return team;
         }
     });
 };
 
 // prompt function to create engineer
-const engInfo = engineers => {
-    // if no "engineer" array
-    if(!engineers.eng){
-        engineers.eng = [];
-    };
-
+const engInfo = () => {
     return inquirer.prompt([
         {
             type: "input",
@@ -91,7 +88,7 @@ const engInfo = engineers => {
         }
     ])
     .then(engData => {
-        engineers.eng.push(engData);
+        team.eng.push(engData);
         if(engData.confirmEmployee === "Engineer"){
             return engInfo(engData);
         }
@@ -99,18 +96,13 @@ const engInfo = engineers => {
            return intInfo(engData);
         }
         else if(engData.confirmEmployee === "Completed Team"){
-            return engineers;
+            return team;
         }
     });
 };
 
 // prompt function to create intern
 const intInfo = interns => {
-    // if no 'interns' array
-    if(!interns.int){
-        interns.int = [];
-    };
-
     return inquirer.prompt([
         {
             type: "input",
@@ -141,7 +133,7 @@ const intInfo = interns => {
         }
     ])
     .then(intData => {
-        interns.int.push(intData);
+        team.int.push(intData);
         if(intData.confirmEmployee === "Engineer"){
             return engInfo(intData);
         }
@@ -149,7 +141,7 @@ const intInfo = interns => {
            return intInfo(intData);
         }
         else if(intData.confirmEmployee === "Completed Team"){
-            return interns;
+            return team;
         }
     });
 };
@@ -188,11 +180,9 @@ const copyFile = () => {
 
 // start prompts for manager, engineer, and interns and create files into dist/
 manInfo()
-    //.then(engInfo)
-    //.then(intInfo)
     .then(answers => {
         console.log(answers);
-        //return generatePage(answers);
+        return generatePage(answers);
     })
     .then(pageHTML => {
         console.log("Team profile was created successfully! Find the HTML and CSS in the dist folder.");
