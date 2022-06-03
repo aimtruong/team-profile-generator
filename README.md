@@ -29,7 +29,7 @@
 ![first-preview](https://user-images.githubusercontent.com/95596045/156950365-2de7fa82-432e-469d-8123-e28c7ff12179.JPG)
 
 ## Walkthrough Video
-
+![walkthrough](https://drive.google.com/drive/u/0/folders/104DHVO57HQPfIcBoaW4bQ50e7lzJmmft)
 
 ## Contributing
 - JavaScript, Node, Inquirer, Jest, FileSystem
