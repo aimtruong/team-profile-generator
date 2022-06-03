@@ -12,7 +12,7 @@ test("is an Employee", () => {
     expect(employee.id).toEqual(expect.any(Number));
     
     // see if email has a @ to be true
-    expect(employee.email).toEqual("email@email.com");
+    expect(employee.email).toEqual(expect.any(String));
 
     // see if getRole() returns Employee
     expect(employee.getRole()).toEqual(expect.stringMatching(/Employee/));
@@ -38,7 +38,8 @@ test("gets employee's Id", () => {
 test("gets employee's Email", () => {
     const employee = new Employee("Jacob");
 
-    expect(employee.getEmail()).toEqual("email@email.com");
+    expect(employee.getEmail()).toEqual(expect.any(String));
+
 });
 
 // checks for employee's getRole()
