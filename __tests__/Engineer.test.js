@@ -14,7 +14,7 @@ test("is an Engineer", () => {
     // see if email has a @ to be true
     expect(engineer.email).toEqual(expect.any(String));
 
-    // see if getRole() returns Employee
+    // see if getRole() returns Engineer
     expect(engineer.getRole()).toEqual(expect.stringMatching(/Engineer/));
 });
 

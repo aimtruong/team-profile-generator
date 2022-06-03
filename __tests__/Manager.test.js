@@ -1,12 +1,26 @@
 
 const Manager = require("../lib/Manager.js");
 
-// test for manager class
-test("gets manager's full info", () => {
-    const manager = new Manager(name);
+// checks for Manager class
+test("is an Manager", () => {
+    const manager = new Manager("Jacob");
 
-    expect(manager.()).toHaveProperty("manName");
-    expect(manager.()).toHaveProperty("manId");
-    expect(manager.()).toHaveProperty("manEmail");
-    expect(manager.()).toHaveProperty("manOffice");
+    // see if name is anything that's not undefined
+    expect(manager.fName).toBe("Jacob");
+
+    // see if id is any number
+    expect(manager.id).toEqual(expect.any(Number));
+    
+    // see if email has a @ to be true
+    expect(manager.email).toEqual(expect.any(String));
+
+    // see if getRole() returns Manager
+    expect(manager.getRole()).toEqual(expect.stringMatching(/Manager/));
+});
+
+// test for manager's role for 'Manager'
+test("gets intern's role 'MANAGER'", () => {
+    const intern = new Manager("Jacob");
+
+    expect(intern.getRole()).toBe("Manager");
 });
