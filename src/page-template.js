@@ -36,7 +36,7 @@ const generateEngineer = engineers => {
                     <div class = "job-detail">
                         <p class = "job-info">ID: ${engId}</p>
                         <p class = "job-info">Email: <a href = "mailto:${engEmail}">${engEmail}</a></p>
-                        <p class = "job-info">GitHub: <a href = "github.com/${engGit}" target = "_blank">${engGit}</a></p>
+                        <p class = "job-info">GitHub: <a href = "https://github.com/${engGit}" target = "_blank">${engGit}</a></p>
                     </div>
                 </section>
             `
