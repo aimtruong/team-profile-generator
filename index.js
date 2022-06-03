@@ -5,7 +5,7 @@ const generatePage = require("./src/page-template");
 const fs = require("fs");
 
 const team = {
-    manager: [],
+    man: [],
     eng: [],
     int: []
 };
@@ -43,7 +43,7 @@ const manInfo = () => {
         }
     ])
     .then(manData => {
-        team.manager.push(manData);
+        team.man.push(manData);
         if(manData.confirmEmployee === "Engineer"){
             return engInfo(manData);
         }

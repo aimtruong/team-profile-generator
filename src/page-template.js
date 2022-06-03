@@ -1,4 +1,27 @@
 
+const generateManager = man => {
+    return `
+    ${man
+        .map(({ manName, manId, manEmail, manOffice }) => {
+            return `
+            <section class = "card">
+                <div class = "job-title">
+                    <p>${manName}</p>
+                    <p><i class="bi bi-clipboard-check-fill"></i>   Manager</p>
+                </div>
+                <div class = "job-detail">
+                    <p class = "job-info">ID: ${manId}</p>
+                    <p class = "job-info">Email: <a href = "mailto:${manEmail}" >${manEmail}</a></p>
+                    <p class = "job-info">Office number: ${manOffice}</p>
+                </div>
+            </section>
+            `
+        })
+        .join("")
+    }
+    `;
+};
+
 const generateEngineer = engineers => {
     return `
     ${engineers
@@ -48,7 +71,7 @@ const generateIntern = interns => {
 };
 
 module.exports = answers => {
-    const { manName, manId, manEmail, manOffice, eng, int } = answers;
+    const { man, eng, int } = answers;
 
     return `
         <!DOCTYPE html>
@@ -71,17 +94,7 @@ module.exports = answers => {
             </header>
         
             <main class = "container">
-                <section class = "card">
-                    <div class = "job-title">
-                        <p>${manName}</p>
-                        <p><i class="bi bi-clipboard-check-fill"></i>   Manager</p>
-                    </div>
-                    <div class = "job-detail">
-                        <p class = "job-info">ID: ${manId}</p>
-                        <p class = "job-info">Email: <a href = "mailto:${manEmail}" >${manEmail}</a></p>
-                        <p class = "job-info">Office number: ${manOffice}</p>
-                    </div>
-                </section>
+                ${generateManager(man)}
                 ${generateEngineer(eng)}
                 ${generateIntern(int)}
             </main>
